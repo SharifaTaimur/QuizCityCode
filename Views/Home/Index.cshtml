@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Country Quiz Codes";
+}
+
+<style>
+    #startbutton {
+        width: 50%;
+        margin: 0px auto;
+        text-align: center;
+        padding-top:46px;
+    }
+</style>
+
+
+<div class="jumbotron">
+    <h1 style="text-align:center;">Welcome to this quiz!</h1>
+    <h1 style="text-align:center;">Would you like to start?</h1>
+
+     <div id="startbutton">
+        <a class="btn btn-large btn-danger btn-lg" href='@Url.Action("StartQuiz", "Quiz")'>
+            Start
+        </a>
+    </div>
+
+
+</div>

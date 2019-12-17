@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="~/Content/StartQuiz.css" rel="stylesheet" />
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        svg {
+            /* width: 100%;
+            height:100%;*/
+            width: 80%;
+            height: 80%;
+            visibility: hidden;
+            padding-right: -550px !important;
+        }
+
+        .centerpreloader {
+            margin: 0px auto;
+            text-align: center;
+            margin-top:-590px;
+        }
+
+        #LOGO {
+            top: -30px !important;
+        }
+     
+    </style>
+</head>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+    <!--<div id="loadbar" style="margin-top:-90px;"> -->
+    <div id="loadbar" style="margin-top:-90px;" class="centerpreloader">
+        <svg class="mainSVG" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <circle id="dot" cx="0" cy="0" r="5" fill="#fff" />
+            </defs>
+
+            <circle id="mainCircle" fill="none" stroke="none" stroke-width="2" stroke-miterlimit="10" cx="400" cy="300" r="70"></circle>
+            <circle id="circlePath" fill="none" stroke="none" stroke-width="2" stroke-miterlimit="10" cx="400" cy="300" r="80" />
+
+            <g id="mainContainer">
+                <path id="plane" fill="#FFF" d="M38.1,19.6c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.6-0.3-0.7c-1.2-1-2.8-1.6-4.4-1.6l-8.7,0L12.2,0L8.2,0l6.3,16.5	l-5.9,0c-0.5,0-1.1,0.1-1.6,0.4L3.1,11L0,11l3.1,7.9L0,26.7l3.1,0l3.9-5.9c0.5,0.3,1,0.4,1.6,0.4l5.9,0L8.2,37.7h3.9l13-16.5l8.7,0	C35.4,21.2,36.9,20.6,38.1,19.6" />
+            </g>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="row">
+            <br>
+            <!--  <span class="image-position">
+                <a href="https://www.facebook.com/meuix/?ref=settings" target="_blank">
+                    <img src="https://lh4.googleusercontent.com/fLEIj3iQb7O1FhjOpLFbJtHmsMlLGmLynSWUvAP70qF0HLEBty-FANvwweg7Sv2XqSpzOKNI=w1366-h638">
+                </a>
+            </span> -->
+        </div>
+        <div class="row" id="Questions" style="margin-top: -50px;">
+            <br><br>
+            <div class="col-sm-8 col-sm-offset-2">
+                <!--<div class="col-xs-3 col-xs-offset-5">
+                    <div id="loadbar" style="display: none;">
+                        <img src="https://8finatics.s3.amazonaws.com/static/reload_emi.gif" alt="Loading" class="center-block loanParamsLoader" style="">
+                    </div>
+                </div> -->
+                <br /><br />
+                <div id="quiz">
+                    <div class="question">
+                        <h3>
+                            <span class="label label-warning" id="qid">1</span>
+                            <!--<span id="question"> How can you add a single line comment in a JavaScript?</span> -->
+                            <span id="question"></span>
+                        </h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <input type="radio" id="f-option" class="selector" name="selector" value="1">
+                            <!-- <label for="f-option" class="element-animation">/*-- comment --*/</label>-->
+                            <label for="f-option" class="element-animation"></label>
+                            <div class="check"></div>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="s-option" class="selector" name="selector" value="2">
+                            <!--<label for="s-option" class="element-animation">comment //</label>-->
+                            <label for="s-option" class="element-animation"></label>
+                            <div class="check"><div class="inside"></div></div>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="t-option" class="selector" name="selector" value="3">
+                            <!-- <label for="t-option" class="element-animation">comment [ ]</label>-->
+                            <label for="t-option" class="element-animation"></label>
+                            <div class="check"><div class="inside"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-muted">
+                    <span id="answer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div id="result-of-question" class="pulse animated" style="display: none;margin-top:-50px;!important;">
+                    <span id="totalCorrect" class="pull-right"></span>
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Question No.</th>
+                                <th>Our answer</th>
+                                <th>Your answer</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quizResult"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="restart">
+            <div class="col-sm-6">
+                <h3 style="color:white;text-align:right;">Would you like to do the test again?</h3>
+            </div>
+            <div class="col-sm-6 " style="padding-top:10px;">
+                <a class="btn btn-danger" style="width:50%;margin-left: 95px;" href='@Url.Action("StartQuiz", "Quiz")'>
+                    Start
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Quiz completed</h4>
+                </div>
+                <div class="modal-body">
+                    <p> Click ok to see your answers.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="Okay" data-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/StartQuiz.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="//www.amcharts.com/lib/4/core.js"></script>
+    <script src="//www.amcharts.com/lib/4/charts.js"></script>
+    <script src="//www.amcharts.com/lib/4/maps.js"></script>
+
+
+    <script src="~/Scripts/MorphSVGPlugin.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/TimelineLite.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/easing/EasePack.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+            $('#loadbar').hide();
+            $('#restart').hide();
+        });
+
+
+        TweenMax.set('#circlePath', {
+            attr: {
+                r: document.querySelector('#mainCircle').getAttribute('r')
+            }
+        })
+        MorphSVGPlugin.convertToPath('#circlePath');
+
+        var xmlns = "http://www.w3.org/2000/svg",
+            xlinkns = "http://www.w3.org/1999/xlink",
+            select = function (s) {
+                return document.querySelector(s);
+            },
+            selectAll = function (s) {
+                return document.querySelectorAll(s);
+            },
+            mainCircle = select('#mainCircle'),
+            mainContainer = select('#mainContainer'),
+            plane = select('#plane'),
+            mainSVG = select('.mainSVG'),
+            mainCircleRadius = Number(mainCircle.getAttribute('r')),
+            //radius = mainCircleRadius,
+            numDots = mainCircleRadius / 2,
+            step = 360 / numDots,
+            dotMin = 0,
+            circlePath = select('#circlePath')
+
+        //
+        //mainSVG.appendChild(circlePath);
+        TweenMax.set('svg', {
+            visibility: 'visible'
+        })
+        TweenMax.set([plane], {
+            transformOrigin: '50% 50%'
+        })
+
+        var circleBezier = MorphSVGPlugin.pathDataToBezier(circlePath.getAttribute('d'), {
+            offsetX: -19,
+            offsetY: -18
+        })
+
+        //console.log(circlePath)
+        var mainTl = new TimelineMax();
+
+        function makeDots() {
+            var d, angle, tl;
+            for (var i = 0; i < numDots; i++) {
+
+                d = select('#dot').cloneNode(true);
+                mainContainer.appendChild(d);
+                angle = step * i;
+                TweenMax.set(d, {
+                    attr: {
+                        cx: (Math.cos(angle * Math.PI / 180) * mainCircleRadius) + 400,
+                        cy: (Math.sin(angle * Math.PI / 180) * mainCircleRadius) + 300
+                    }
+                })
+
+                tl = new TimelineMax({
+                    repeat: -1
+                });
+                tl
+                    .from(d, 0.2, {
+                        attr: {
+                            r: dotMin
+                        },
+                        ease: Power2.easeIn
+                    })
+                    .to(d, 1.8, {
+                        attr: {
+                            r: dotMin
+                        },
+                        ease: Power2.easeOut
+                    })
+
+                mainTl.add(tl, i / (numDots / tl.duration()))
+            }
+            var planeTl = new TimelineMax({
+                repeat: -1
+            });
+            planeTl.to(plane, tl.duration(), {
+                bezier: {
+                    type: "cubic",
+                    values: circleBezier,
+                    autoRotate: true
+                },
+                ease: Linear.easeNone
+            })
+            mainTl.add(planeTl, 0.05)
+        }
+
+        makeDots();
+        mainTl.time(20);
+        TweenMax.to(mainContainer, 30, {
+            rotation: -360,
+            svgOrigin: '400 300',
+            repeat: -1,
+            ease: Linear.easeNone
+        })
+        mainTl.timeScale(1.6);
+
+    </script>
+</body>
